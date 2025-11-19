@@ -21,10 +21,10 @@ module.exports = {
 
     toggleAvilability:(id, is_available)=>db.query("UPDATE flower SET is_available = ? WHERE flower_id = ?",[is_available,id]),
 
-    updateFlower: (id, { name, price, color, is_available }) =>
+    updateFlower: (id, { name, price, colors, is_available }) =>
         db.query(
-            "UPDATE flowers SET name = ?, price = ?, color = ?, is_available = ? WHERE flower_id = ?",
-            [name, price, color, is_available, id]
+            "UPDATE flowers SET name = ?, price = ?, colors = ?, is_available = ? WHERE flower_id = ?",
+            [name, price, colors, is_available, id]
         ),
 };
 

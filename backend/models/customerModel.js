@@ -12,7 +12,7 @@ module.exports ={
 
     getCustomerOrders: (customer_id) =>
         db.query(`
-            SELECT o.*, oi.number_of_items, f.name, f.price, f.color
+            SELECT o.*, oi.number_of_items, f.name, f.price, f.colors
             FROM orders o
             JOIN order_items oi ON o.order_id = oi.order_id
             JOIN flowers f ON oi.flower_id = f.flower_id
