@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart - Sky Flowers</title>
+  <link rel="stylesheet" href="../script/style.css">
+</head>
+<body>
+
+  <header class="hero" style="padding:4rem 1rem;">
+    <h1>Your Cart</h1>
+  </header>
+
+  <div class="container">
+    <div id="cart-items" style="margin:2rem 0;"></div>
+
+    <div style="text-align:right; padding:1.5rem; background:white; border-radius:20px; font-size:1.8rem; color:#d63384;">
+      Total: <strong>MKW <span id="total">0</span></strong>
+    </div>
+
+    <div style="text-align:center; margin:3rem 0;">
+      <button class="btn" onclick="location.href='index.html'" style="background:#666; margin:0 1rem;">
+        Continue Shopping
+      </button>
+      <button class="btn" onclick="location.href='checkout.html'" style="font-size:1.4rem; padding:1.2rem 3rem; margin:0 1rem;">
+        Proceed to Checkout
+      </button>
+    </div>
+  </div>
+
+  <button class="cart-btn" onclick="location.href='cart.html'">
+    Cart <span id="cart-count">0</span>
+  </button>
+
+  <script src="../script/script.js"></script>
+</body>
+</html>
