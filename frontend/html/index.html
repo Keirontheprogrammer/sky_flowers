@@ -6,13 +6,23 @@
   <title>Sky Flowers - Beautiful Bouquets Delivered</title>
   <link rel="stylesheet" href="../styles/styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  
 </head>
 <body>
-    <header>
-         <div style="text-align:center; margin:3rem 0; font-size:0.9rem; color:#aaa;">
-    <a href="cart.html" style="color:#d63384; text-decoration:underline;">cart Panel</a>
-  </div>
+    <header id="head">
+      <div style="text-align:center;   color:#aaa;">
+      <a href="#footer" >Contact</a>
+      <a href="cart.html" >cart
+            <img src="../assets/images/shopping-cart.png" alt="Cart" style="width:20px; height: 100%;">
+ 
+</a>
+
+    </div>
+      <label class="switch">
+            <input type="checkbox" id="theme-toggle">
+            <span class="slider"></span>
+        </label>
     </header>
   
   <header class="hero">
@@ -33,13 +43,38 @@
   </div>
 
   
-  <button class="cart-btn" onclick="location.href='cart.html'">
+  <button class="cart-btn" onclick="location.href='cart.html'">cart
     <span id="cart-count">0</span>
   </button>
 
   
- 
+<footer id="footer" style="background:rgba(0,0,0,0.9); color:white; padding:3rem 1rem; margin-top:5rem; text-align:center;">
+  <div class="container" style="max-width:1000px; margin:0 auto;">
+    <h2 style="font-family:'Dancing Script',cursive; font-size:2.8rem; color:#e8f5e8; margin-bottom:1rem;">
+      Sky Flowers Malawi
+    </h2>
+    <p style="font-size:1.2rem; margin:1rem 0; opacity:0.9;">
+      Fresh bouquets delivered with love
+    </p>
 
-  <script src="../script/script.js"></script>
+    <div class="social-icons">
+      <a class="fa fa-whatsapp" href="https://wa.me/265990406625" target="_blank" style="color:#25D366;">WhatsApp</a>
+      <a class="fa fa-tiktok" href="https://tiktok.com/@skyglory59" target="_blank" style="color:#ff0050;">TikTok</a>
+      <a class="fa fa-instagram" href="https://instagram.com/i_make_butterfly_and_ribbon_/#" target="_blank" style="color:#E4405F;">Instagram</a>
+      <a class="fa fa-phone" href="tel:+265990406625" style="color:#4CAF50;">Phone: +265990406625</a>
+      <div>
+        <button class="top-btn" onclick="location.href='#head'">top
+  </button>
+      </div>
+    </div>
+
+    <p style="margin-top:2rem; opacity:0.7; font-size:1rem;">
+      © 2025 Sky Flowers Malawi • Made with love in Lilongwe
+    </p>
+  </div>
+</footer>
+
+
+<script src="../script/script.js"></script>
 </body>
 </html>

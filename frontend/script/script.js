@@ -3,6 +3,10 @@ const API = 'http://localhost:5000/api';
 
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
+document.getElementById("theme-toggle").addEventListener("change", function () {
+    document.body.classList.toggle("dark-mode", this.checked);
+});
+
 
 document.addEventListener('DOMContentLoaded', () => {
   updateCartCount();
