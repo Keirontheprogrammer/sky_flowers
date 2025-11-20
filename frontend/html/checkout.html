@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart - Sky Flowers</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body style="background: linear-gradient(40deg, #ff00c8, #00ff73 30%); ">
+    <div class="log" >
+
+        <img src="../assets/images/pngtree-natural-flower-logo-png-image_4135636.jpg" alt="logo">
+        <form action="/login" method="POST">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required><br>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required pattern="(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-zA-Z]).{8,}"
+            title="must contain symbols and at least 8 characters"><br>
+
+            <button type="submit">submit</button>
+            
+                <div id="Remember">
+                    <input type="checkbox" id="checkbox" name="checkbox">
+                <label for="checkbox">Remember me</label>
+                </div>
+
+                <div id="signin">
+                    <label for="sig_in">
+                        Don't have an account
+                        <a href="sigin.html">sigin</a>
+                    </label>
+                </div>
+
+                <span id="forgot">
+                    <label for="forgot password">
+                        <a href="#forgotpassowrd.html">Forgot password</a>
+                    </label>
+                </span>
+
+        </form>
+    </div>
+</body>
+</html>
