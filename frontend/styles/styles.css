@@ -8,16 +8,35 @@ html {
   scroll-behavior: smooth;
 }
 
+
 :root {
   --main: #2e7d32;
   --accent: #388e3c;
   --light: #a5d6a7;
   --dark: #1b5e20;
 
+  --display-of-head: flex;
+  --justify-content-of-head: flex-end;
+  --align-items-of-head: center;
+  --padding-of-head: 1rem;
+  --gap-of-head: 2rem;
+  --flex-wrap-of-head: wrap;
+
+
   --width-of-switch: 3.5em;
   --height-of-switch: 2em;
   --size-of-icon: 1.4em;
   --slider-offset: 0.3em;
+}
+
+#head,
+#headerr {
+ display: var(--display-of-head);
+ justify-content: var(--justify-content-of-head);
+ align-items: var(--align-items-of-head);
+ padding: var(--padding-of-head);
+ gap: var(--gap-of-head);
+ flex-wrap: var(--flex-wrap-of-head);
 }
 
 body {
@@ -30,7 +49,7 @@ body {
   overflow-x: hidden; /* prevents horizontal scroll on small screens */
 }
 
-/* ==================== DARK MODE ==================== */
+
 .dark-mode {
   background: #121212;
   color: #f1f1f1;
@@ -50,17 +69,7 @@ body {
 }
 .dark-mode .social-icons a { color: #e0e0e0; }
 
-/* ==================== HEADER ==================== */
-#head {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 1rem;
-  gap: 2rem;
-  flex-wrap: wrap; /* important for small screens */
-}
 
-/* ==================== DARK MODE TOGGLE ==================== */
 .switch {
   position: relative;
   display: inline-block;
@@ -72,7 +81,6 @@ body {
   position: absolute;
   cursor: pointer;
   inset: 0;
-  background: #f4f4f5;
   transition: .4s;
   border-radius: 30px;
 }
@@ -88,14 +96,14 @@ body {
   transition: .4s;
   border-radius: 50%;
 }
-input:checked + .slider { background: #303136; }
+/*input:checked + .slider { background: #303136; }*/
 input:checked + .slider:before {
   transform: translateX(calc(var(--width-of-switch) - var(--size-of-icon) - 2*var(--slider-offset))) translateY(-50%);
   background: #303136;
   box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;
 }
 
-/* ==================== HERO ==================== */
+
 .hero {
   text-align: center;
   padding: 5rem 1rem;
@@ -119,7 +127,7 @@ input:checked + .slider:before {
   color: var(--accent);
 }
 
-/* ==================== REST OF LAYOUT ==================== */
+
 .section-title {
   text-align: center;
   font-family: 'Dancing Script', cursive;
@@ -155,7 +163,7 @@ input:checked + .slider:before {
   background: #e8f5e8;
 }
 
-/* ==================== BUTTONS & CARDS ==================== */
+
 .btn {
   background: var(--main);
   color: white;
@@ -172,7 +180,7 @@ input:checked + .slider:before {
   transform: scale(1.05);
 }
 
-/* ==================== LOGIN MODAL ==================== */
+
 .log {
   position: fixed;
   inset: 50% auto auto 50%;
@@ -195,7 +203,7 @@ input:checked + .slider:before {
   border-radius: 12px;
 }
 
-/* ==================== FIXED BUTTONS ==================== */
+
 .action-buttons {
   position: fixed;
   bottom: 20px;
@@ -236,7 +244,7 @@ input:checked + .slider:before {
   place-items: center;
 }
 
-/* ==================== SOCIAL & GALLERY ==================== */
+
 .social-icons {
   display: flex;
   gap: 3rem;
@@ -259,7 +267,7 @@ input:checked + .slider:before {
 }
 .gallery img:hover { transform: scale(1.03); }
 
-/* ==================== RESPONSIVE (now perfect) ==================== */
+
 @media (max-width: 768px) {
   .flowers-grid { grid-template-columns: 1fr 1fr; }
 }
