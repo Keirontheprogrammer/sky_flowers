@@ -1,23 +1,38 @@
-
 const API = 'http://localhost:5000/api';
 
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-document.getElementById("theme-toggle").addEventListener("change", function () {
+let cart = []; 
+
+
+function loadCartFromStorage() {
+  const saved = localStorage.getItem('cart');
+  cart = saved ? JSON.parse(saved) : [];
+}
+
+document.getElementById("theme-toggle")?.addEventListener("change", function () {
     document.body.classList.toggle("dark-mode", this.checked);
 });
 
 
 document.addEventListener('DOMContentLoaded', () => {
+  loadCartFromStorage();      
   updateCartCount();
+
+  
+  if (location.pathname.includes('index.html') || location.pathname === '/' || location.pathname.endsWith('/frontend/')) {
+    loadFlowers();
+  }
+  if (location.pathname.includes('product.html')) loadProduct();
+  if (location.pathname.includes('cart.html')) loadCart();
 });
 
-// Update cart badge
+// Update cart badge 
 function updateCartCount() {
   const count = cart.reduce((sum, item) => sum + (item.qty || 1), 0);
-  const badge = document.getElementById('cart-count');
-  if (badge) badge.textContent = count;
-  localStorage.setItem('cart', JSON.stringify(cart));
+  document.querySelectorAll('#cart-count').forEach(badge => {  
+    if (badge) badge.textContent = count || '0';
+  });
+  localStorage.setItem('cart', JSON.stringify(cart));  
 }
 
 // Add to cart
@@ -28,11 +43,12 @@ function addToCart(flower) {
   } else {
     cart.push({ ...flower, qty: 1 });
   }
+  localStorage.setItem('cart', JSON.stringify(cart));  
   updateCartCount();
   alert(`${flower.name} added to cart!`);
 }
 
-// Load flowers on shop page
+// Load flowers on shop page 
 async function loadFlowers() {
   try {
     const res = await fetch(`${API}/flowers`);
@@ -79,7 +95,7 @@ async function loadFlowers() {
   }
 }
 
-// Load single product page
+// Load single product page 
 async function loadProduct() {
   const id = new URLSearchParams(location.search).get('id');
   if (!id) return;
@@ -105,7 +121,7 @@ async function loadProduct() {
   }
 }
 
-// Load cart page
+// Load cart page 
 function loadCart() {
   const itemsDiv = document.getElementById('cart-items');
   const totalEl = document.getElementById('total');
@@ -113,6 +129,7 @@ function loadCart() {
   if (cart.length === 0) {
     itemsDiv.innerHTML = '<p style="text-align:center;padding:3rem;color:#999;">Your cart is empty</p>';
     if (totalEl) totalEl.textContent = '0';
+    updateCartCount();
     return;
   }
 
@@ -126,9 +143,9 @@ function loadCart() {
           <p>MKW ${parseFloat(item.price).toLocaleString()} × ${item.qty}</p>
         </div>
         <b>MKW ${(item.price * item.qty).toLocaleString()}</b>
-        <button class="btn" onclick="cart.splice(${i},1); loadCart(); updateCartCount();" style="background:#d32f2f;padding:0.5rem 1rem;">
-          Remove
-        </button>
+        <button class="btn" onclick="removeFromCart(${i})" style="background:#d32f2f;padding:0.5rem 1rem;">
+         Remove
+         </button>
       </div>
     `;
   }).join('');
@@ -137,9 +154,18 @@ function loadCart() {
     const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
     totalEl.textContent = total.toLocaleString();
   }
+  updateCartCount();
 }
 
-// Checkout
+// Remove from cart 
+function removeFromCart(index) {
+  cart.splice(index, 1);
+  localStorage.setItem('cart', JSON.stringify(cart));  
+  loadCart();
+  updateCartCount();
+}
+
+// Checkout 
 async function checkout() {
   const name = document.getElementById('name')?.value.trim();
   const phone = document.getElementById('phone')?.value.trim();
@@ -180,10 +206,3 @@ if (location.pathname.includes('checkout.html') && new URLSearchParams(location.
     form.innerHTML = '<h2 style="color:green;text-align:center;padding:4rem;">Order Placed Successfully!<br>We will call you soon</h2>';
   }
 }
-
-
-if (location.pathname.includes('index.html') || location.pathname === '/' || location.pathname.endsWith('/frontend/')) {
-  loadFlowers();
-}
-if (location.pathname.includes('product.html')) loadProduct();
-if (location.pathname.includes('cart.html')) loadCart();
